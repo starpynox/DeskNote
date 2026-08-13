@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-image: radial-gradient(
+    ellipse 900px 500px at 50% -10%,
+    rgba(245, 166, 35, 0.08),
+    transparent 60%
+  );
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Signature element: desk-clock LED digits used for quiz countdowns.     */
+/* Amber glow on a recessed chip echoes a desk-lamp-lit alarm clock,      */
+/* tying the app's "late-night study desk" identity to its core feature. */
+/* ---------------------------------------------------------------------- */
+.led-digits {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.led-chip {
+  background: linear-gradient(180deg, #14161d 0%, #0c0e13 100%);
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.6),
+    0 0 18px -6px rgba(245, 166, 35, 0.45);
+}
+
+.led-chip.is-urgent {
+  border-color: rgba(242, 84, 91, 0.35);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.6),
+    0 0 18px -4px rgba(242, 84, 91, 0.5);
+}
+
+.led-glow-text {
+  color: #ffcf7a;
+  text-shadow: 0 0 12px rgba(245, 166, 35, 0.55);
+}
+
+.led-glow-text.is-urgent {
+  color: #ff9aa0;
+  text-shadow: 0 0 12px rgba(242, 84, 91, 0.55);
+}
+
+/* Prism.js — dark theme tuned to the DeskNote palette */
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #edeef2;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  text-shadow: none;
+  background: none;
+}
+
+pre[class*='language-'] {
+  overflow: auto;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6e7385;
+}
+.token.punctuation {
+  color: #aeb2c2;
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff9aa0;
+}
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #6ee7d8;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #ffc966;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #f5a623;
+}
+.token.function,
+.token.class-name {
+  color: #93c5fd;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  color: #c4b5fd;
+}
+
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid #2a2f3e;
+}
+.line-numbers-rows > span:before {
+  color: #4a4f61;
+}
