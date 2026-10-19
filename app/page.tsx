@@ -130,7 +130,7 @@ export default function DashboardPage() {
           >
             <CodeXml size={18} className="text-violet-300" />
             <span className="text-sm font-medium text-ink-hi">Save a snippet</span>
-            <span className="text-xs text-ink-low">Keep code you'll need again</span>
+            <span className="text-xs text-ink-low">Keep code you&apos;ll need again</span>
           </Link>
         </div>
       </section>

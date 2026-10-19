@@ -32,6 +32,7 @@ export default function VoiceDictationButton({ onResult }: VoiceDictationButtonP
   const [listening, setListening] = useState(false);
   const [supported, setSupported] = useState(true);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const lastProcessedIndexRef = useRef(0);
 
   useEffect(() => {
     const SpeechRecognition =
@@ -48,10 +49,11 @@ export default function VoiceDictationButton({ onResult }: VoiceDictationButtonP
 
     recognition.onresult = (event) => {
       let finalTranscript = '';
-      for (let i = event.resultIndex; i < event.results.length; i++) {
+      for (let i = Math.max(event.resultIndex, lastProcessedIndexRef.current); i < event.results.length; i++) {
         const result = event.results[i];
         if (result.isFinal) {
           finalTranscript += `${result[0].transcript} `;
+          lastProcessedIndexRef.current = i + 1;
         }
       }
       if (finalTranscript.trim()) {
@@ -72,6 +74,7 @@ export default function VoiceDictationButton({ onResult }: VoiceDictationButtonP
       recognitionRef.current.stop();
       setListening(false);
     } else {
+      lastProcessedIndexRef.current = 0;
       recognitionRef.current.start();
       setListening(true);
     }
