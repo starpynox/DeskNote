@@ -1,4 +1,4 @@
-const CACHE_NAME = 'desknote-cache-v1';
+const CACHE_NAME = 'desknote-cache-v2';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
